@@ -5,7 +5,7 @@ const setupInput = require('./input');
 const connect = function () {
 
   const conn = net.createConnection({
-    host: 'localhost',
+    host: '165.227.47.243',
     port: 50541
   })
 
@@ -38,7 +38,7 @@ const connect = function () {
   return conn;
 }
 
-setupInput();
-connect();
+const gameInstance = connect();
+setupInput(gameInstance);
 
 module.exports = connect;
