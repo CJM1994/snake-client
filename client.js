@@ -1,5 +1,19 @@
 const net = require("net");
 
+const setupInput = function () {
+  const stdin = process.stdin;
+  stdin.setEncoding('utf8');
+  stdin.setRawMode(true);
+  stdin.resume();
+  stdin.on('data', handleUserInput);
+  return stdin;
+}
+
+const handleUserInput = function (data) {
+  console.log(data.charCodeAt());
+  if (data.charCodeAt() === 3) process.exit();
+}
+
 // establishes a connection with the game server
 const connect = function () {
 
@@ -12,18 +26,18 @@ const connect = function () {
     console.log('connection successful...');
     conn.write('Name: CJM');
 
-    setInterval(() => {
-      conn.write('Move: down');
-    }, 50);
-    setInterval(() => {
-      conn.write('Move: down');
-    }, 100);
-    setInterval(() => {
-      conn.write('Move: down');
-    }, 150);
-    setInterval(() => {
-      conn.write('Move: down');
-    }, 200);
+    // setInterval(() => {
+    //   conn.write('Move: down');
+    // }, 50);
+    // setInterval(() => {
+    //   conn.write('Move: down');
+    // }, 100);
+    // setInterval(() => {
+    //   conn.write('Move: down');
+    // }, 150);
+    // setInterval(() => {
+    //   conn.write('Move: down');
+    // }, 200);
 
   })
 
@@ -36,5 +50,8 @@ const connect = function () {
 
   return conn;
 }
+
+setupInput();
+connect();
 
 module.exports = connect;
