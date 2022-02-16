@@ -33,6 +33,14 @@ const handleUserInput = function (data) {
       connection.write('Move: right');
       break;
 
+    case 'H':
+      connection.write('Say: HOWDY!');
+      break;
+
+    case '!':
+      connection.write('Say: !!!');
+      break;
+
     default:
       break;
   }
